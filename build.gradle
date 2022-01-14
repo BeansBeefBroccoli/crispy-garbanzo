@@ -1,6 +1,9 @@
 buildscript {
     repositories {
-        maven { url = 'https://maven.minecraftforge.net' }
+        maven {
+            name = 'ForgeGradle Maven'
+            url = 'https://maven.minecraftforge.net'
+            }
         mavenCentral()
     }
     dependencies {
@@ -16,7 +19,7 @@ version = "${mod_version}"
 group = "${mod_base_package}.${mod_id}"
 archivesBaseName = "${project.jar_name}-${minecraft_version}"
 
-java.toolchain.languageVersion = JavaLanguageVersion.of(8) // Mojang ships Java 8 to end users, so your mod should target Java 8.
+java.toolchain.languageVersion = JavaLanguageVersion.of(8)
 
 println('Java: ' + System.getProperty('java.version') + ' JVM: ' + System.getProperty('java.vm.version') + '(' + System.getProperty('java.vendor') + ') Arch: ' + System.getProperty('os.arch'))
 minecraft {
@@ -75,15 +78,21 @@ sourceSets.main.resources {
 
 repositories {
     maven {
+        name = 'Geckolib Maven'
+        url =    'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/'
+        }
+/*
+    maven {
         name = ''
         url 'https://repo.repsy.io/mvn/fadookie/particleman'
     }
+*/
     maven {
         name = 'Curseforge Maven'
         url = 'https://www.cursemaven.com'
     }
     maven {
-        name = 'JEI Maven'
+        name = 'JEI, Mantle, & TConstruct Maven'
         url = 'https://dvs1.progwml6.com/files/maven/'
     }
     maven {
@@ -95,7 +104,7 @@ repositories {
         url = 'https://jitpack.io'
         }
     maven {
-        name = 'tterrag maven'
+        name = 'Create, Flywheel, & The One Probe Maven'
         url = 'https://maven.tterrag.com/'
     }
     maven {
@@ -103,11 +112,11 @@ repositories {
         url = 'https://maven.blamejared.com'
     }
     maven {
-        name = 'Immersive Engineering Maven'
+        name = 'CoFH Core & Immersive Engineering Maven'
         url = 'https://modmaven.dev/'
         content {
             includeGroup 'blusunrize.immersiveengineering'
-            includeGroup 'malte0811'
+//          includeGroup 'malte0811'
         }
     }
 }
@@ -116,6 +125,7 @@ dependencies {
     minecraft 'net.minecraftforge:forge:1.16.5-36.2.20'
 
     implementation fg.deobf("com.github.bernie-g:Techarium:master-SNAPSHOT")
+    implementation fg.deobf("software.bernie.geckolib:${geckolib_version}")
 
     compileOnly fg.deobf("mezz.jei:jei-${jei_mc_version}:${jei_version}:api")
     runtimeOnly fg.deobf("mezz.jei:jei-${jei_mc_version}:${jei_version}")
@@ -132,10 +142,12 @@ dependencies {
     implementation fg.deobf("curse.maven:oh-the-biomes-youll-go-247560:${oh_the_biomes_youll_go_version}")
     implementation fg.deobf("curse.maven:biomes-o-plenty-220318:${biomes_o_plenty_version}")
     implementation fg.deobf("curse.maven:ctm-267602:${ctm_version}")
-
+    implementation fg.deobf("com.simibubi.create:Create:${create_version}")
+    implementation fg.deobf("com.jozufozu.flywheel:Flywheel:${flywheel_version}")
+    implementation fg.deobf("slimeknights.tconstruct:tconstruct:${tconstruct_version}")
+    implementation fg.deobf("slimeknights.mantle:Mantle:${mantle_version}")
     implementation fg.deobf("com.teamcofh:CoFHCore:${cofh_core_version}")
     compileOnly fg.deobf("blusunrize.immersiveengineering:ImmersiveEngineering:${immersive_engineering_version}")
-
     compileOnly fg.deobf("mcp.mobius.waila:Hwyla:${hwyla_version}:api")
     runtimeOnly fg.deobf("mcp.mobius.waila:Hwyla:${hwyla_version}")
 }
@@ -177,14 +189,13 @@ task replaceResources(type: Copy) {
 jar {
     manifest {
         attributes([
-            "Specification-Title" : mod_id,
-            "Specification-Vendor" : mod_authors,
-            "Specification-Version" : "1.0.0",
-            "Implementation-Title" : project.name,
-            "Implementation-Version" : mod_version,
-            "Implementation-Vendor" : mod_authors,
-            "Implementation-Timestamp" : new Date().format("yyyy-MM-dd'T'HH:mm:ssZ"),
-            "MixinConfigs": "${mod_id}.mixin.json"
+            "Specification-Title": mod_id,
+            "Specification-Vendor": mod_authors,
+            "Specification-Version": "1.0.0",
+            "Implementation-Title": project.name,
+            "Implementation-Version": mod_version,
+            "Implementation-Vendor": mod_authors,
+            "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
         ])
     }
 }

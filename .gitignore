@@ -1,18 +1,28 @@
-# Build and Release Folders
-bin-debug/
-bin-release/
-[Oo]bj/
-[Bb]in/
+# Git & Gradle
 
-# Other files and folders
-.settings/
+.gitattributes
+.gradle
+bin
+build
+logs
+run
+src/generated/resources/.cache
 
-# Executables
-*.swf
-*.air
-*.ipa
-*.apk
 
-# Project files, i.e. `.project`, `.actionScriptProperties` and `.flexProperties`
-# should NOT be excluded as they contain compiler settings and other important
-# information for Eclipse / Flash Builder.
+# IDE
+
+.idea
+.project
+.vscode
+*.iml
+*.ipr
+*.iws
+*.launch
+src/test
+
+
+# OS
+
+.DS_Store
+desktop.ini
+thumbs.db
