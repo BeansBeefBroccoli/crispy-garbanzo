@@ -18,7 +18,7 @@ import org.apache.logging.log4j.Logger;
 
 import java.util.stream.Collectors;
 
-@Mod("CrispyGarbanzo")
+@Mod("CrispyGarbanzo.MOD_ID")
 public class CrispyGarbanzo
 {
     private static final Logger LOGGER = LogManager.getLogger();
