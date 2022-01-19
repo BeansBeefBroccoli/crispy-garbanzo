@@ -17,7 +17,7 @@ apply plugin: "maven-publish"
 
 version = "${mod_version}"
 group = "${mod_base_package}.${mod_id}"
-archivesBaseName = "${project.jar_name}-${minecraft_version}"
+archivesBaseName = "${mod_id}"
 
 java.toolchain.languageVersion = JavaLanguageVersion.of(8)
 
@@ -74,45 +74,36 @@ minecraft {
 
 sourceSets.main.resources {
     srcDir "src/generated/resources"
-    }
+}
 
 repositories {
     maven {
-        name = "Geckolib Maven"
         url =    "https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/"
-        }
+    }
 /*
     maven {
-        name = ""
         url "https://repo.repsy.io/mvn/fadookie/particleman"
     }
 */
     maven {
-        name = "Curseforge Maven"
         url = "https://www.cursemaven.com"
     }
     maven {
-        name = "JEI, Mantle, & TConstruct Maven"
         url = "https://dvs1.progwml6.com/files/maven/"
     }
     maven {
-        name = "Hwyla Maven"
         url = "https://maven.tehnut.info"
     }
     maven {
-        name = "Jitpack"
         url = "https://jitpack.io"
         }
     maven {
-        name = "Create, Flywheel, & The One Probe Maven"
         url = "https://maven.tterrag.com/"
     }
     maven {
-        name = "CraftTweaker Maven"
         url = "https://maven.blamejared.com"
     }
     maven {
-        name = "CoFH Core & Immersive Engineering Maven"
         url = "https://modmaven.dev/"
         content {
             includeGroup "blusunrize.immersiveengineering"
@@ -122,7 +113,7 @@ repositories {
 }
 
 dependencies {
-    minecraft "net.minecraftforge:forge:1.16.5-36.2.20"
+    minecraft "net.minecraftforge:forge:${forge_version}"
 
     implementation fg.deobf("com.github.bernie-g:Techarium:master-SNAPSHOT")
     implementation fg.deobf("software.bernie.geckolib:${geckolib_version}")
