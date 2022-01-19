@@ -1,19 +1,19 @@
 buildscript {
     repositories {
         maven {
-            name = 'ForgeGradle Maven'
-            url = 'https://maven.minecraftforge.net'
+            name = "ForgeGradle Maven"
+            url = "https://maven.minecraftforge.net"
             }
         mavenCentral()
     }
     dependencies {
-        classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '5.1.+', changing: true
+        classpath group: "net.minecraftforge.gradle", name: "ForgeGradle", version: "5.1.+", changing: true
     }
 }
-apply plugin: 'net.minecraftforge.gradle'
+apply plugin: "net.minecraftforge.gradle"
 // Only edit below this line, the above code adds and enables the necessary things for Forge to be setup.
-apply plugin: 'eclipse'
-apply plugin: 'maven-publish'
+apply plugin: "eclipse"
+apply plugin: "maven-publish"
 
 version = "${mod_version}"
 group = "${mod_base_package}.${mod_id}"
@@ -21,17 +21,17 @@ archivesBaseName = "${project.jar_name}-${minecraft_version}"
 
 java.toolchain.languageVersion = JavaLanguageVersion.of(8)
 
-println('Java: ' + System.getProperty('java.version') + ' JVM: ' + System.getProperty('java.vm.version') + '(' + System.getProperty('java.vendor') + ') Arch: ' + System.getProperty('os.arch'))
+println("Java: " + System.getProperty("java.version") + " JVM: " + System.getProperty("java.vm.version") + "(" + System.getProperty("java.vendor") + ") Arch: " + System.getProperty("os.arch"))
 minecraft {
     mappings channel: "${mappings_channel}", version: "${mappings_version}"
 
     runs {
         client {
-            workingDirectory project.file('run')
+            workingDirectory project.file("run")
 
-            property 'forge.logging.markers', 'REGISTRIES'
+            property "forge.logging.markers", "REGISTRIES"
 
-            property 'forge.logging.console.level', 'debug'
+            property "forge.logging.console.level", "debug"
 
             mods {
                 "${mod_id}" {
@@ -41,11 +41,11 @@ minecraft {
         }
 
         server {
-            workingDirectory project.file('run')
+            workingDirectory project.file("run")
 
-            property 'forge.logging.markers', 'REGISTRIES'
+            property "forge.logging.markers", "REGISTRIES"
 
-            property 'forge.logging.console.level', 'debug'
+            property "forge.logging.console.level", "debug"
 
             mods {
                 "${mod_id}" {
@@ -55,13 +55,13 @@ minecraft {
         }
 
         data {
-            workingDirectory project.file('run')
+            workingDirectory project.file("run")
 
-            property 'forge.logging.markers', 'REGISTRIES'
+            property "forge.logging.markers", "REGISTRIES"
 
-            property 'forge.logging.console.level', 'debug'
+            property "forge.logging.console.level", "debug"
 
-            args '--mod', mod_id, '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
+            args "--mod", mod_id, "--all", "--output", file("src/generated/resources/"), "--existing", file("src/main/resources/")
 
             mods {
                 "${mod_id}" {
@@ -73,56 +73,56 @@ minecraft {
 }
 
 sourceSets.main.resources {
-    srcDir 'src/generated/resources'
+    srcDir "src/generated/resources"
     }
 
 repositories {
     maven {
-        name = 'Geckolib Maven'
-        url =    'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/'
+        name = "Geckolib Maven"
+        url =    "https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/"
         }
 /*
     maven {
-        name = ''
-        url 'https://repo.repsy.io/mvn/fadookie/particleman'
+        name = ""
+        url "https://repo.repsy.io/mvn/fadookie/particleman"
     }
 */
     maven {
-        name = 'Curseforge Maven'
-        url = 'https://www.cursemaven.com'
+        name = "Curseforge Maven"
+        url = "https://www.cursemaven.com"
     }
     maven {
-        name = 'JEI, Mantle, & TConstruct Maven'
-        url = 'https://dvs1.progwml6.com/files/maven/'
+        name = "JEI, Mantle, & TConstruct Maven"
+        url = "https://dvs1.progwml6.com/files/maven/"
     }
     maven {
-        name = 'Hwyla Maven'
-        url = 'https://maven.tehnut.info'
+        name = "Hwyla Maven"
+        url = "https://maven.tehnut.info"
     }
     maven {
-        name = 'Jitpack'
-        url = 'https://jitpack.io'
+        name = "Jitpack"
+        url = "https://jitpack.io"
         }
     maven {
-        name = 'Create, Flywheel, & The One Probe Maven'
-        url = 'https://maven.tterrag.com/'
+        name = "Create, Flywheel, & The One Probe Maven"
+        url = "https://maven.tterrag.com/"
     }
     maven {
-        name = 'CraftTweaker Maven'
-        url = 'https://maven.blamejared.com'
+        name = "CraftTweaker Maven"
+        url = "https://maven.blamejared.com"
     }
     maven {
-        name = 'CoFH Core & Immersive Engineering Maven'
-        url = 'https://modmaven.dev/'
+        name = "CoFH Core & Immersive Engineering Maven"
+        url = "https://modmaven.dev/"
         content {
-            includeGroup 'blusunrize.immersiveengineering'
-//          includeGroup 'malte0811'
+            includeGroup "blusunrize.immersiveengineering"
+//          includeGroup "malte0811"
         }
     }
 }
 
 dependencies {
-    minecraft 'net.minecraftforge:forge:1.16.5-36.2.20'
+    minecraft "net.minecraftforge:forge:1.16.5-36.2.20"
 
     implementation fg.deobf("com.github.bernie-g:Techarium:master-SNAPSHOT")
     implementation fg.deobf("software.bernie.geckolib:${geckolib_version}")
@@ -154,7 +154,7 @@ dependencies {
 
 def resource_targets = ["META-INF/mods.toml", "pack.mcmeta"]
 task replaceResources(type: Copy) {
-    dependsOn(jar)
+//  dependsOn(jar)
     outputs.upToDateWhen { false }
     def spec = copySpec {
         from(sourceSets.main.resources) {
@@ -166,6 +166,7 @@ task replaceResources(type: Copy) {
                     "license": license,
                     "forge_version_range": forge_version_range, "minecraft_version_range": minecraft_version_range,
                     "loader_version_range": loader_version_range,
+                    "pack_format": pack_format
         }
     }
     with spec
@@ -199,4 +200,4 @@ jar {
     }
 }
 
-jar.finalizedBy('reobfJar')
+jar.finalizedBy("reobfJar")
