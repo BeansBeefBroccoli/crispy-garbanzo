@@ -1,14 +1,16 @@
-modLoader="javafml"
+modLoader = "javafml"
 loaderVersion = "${loader_version_range}"
 issueTrackerURL = "${issue_tracker_url}"
 license = "${license}"
+
 [[mods]]
     modId = "${mod_id}"
     version = "${mod_version}"
     displayName = "${mod_name}"
     displayURL = "${display_url}"
+    logoFile = "${mod_id}.png"
     authors = "${mod_authors}"
-    description = "${mod_description}"
+    description = '''${mod_description}'''
 [[dependencies.${mod_id}]]
     modId = "forge"
     mandatory = true
@@ -22,8 +24,12 @@ license = "${license}"
     ordering = "NONE"
     side = "BOTH"
 [[dependencies.${mod_id}]]
-    modId="techarium"
-    mandatory=true
-    versionRange="${techarium_version_range}"
-    ordering="BEFORE"
-    side="BOTH"
+    modId = "techarium"
+    mandatory = true
+    versionRange = "${techarium_version_range}"
+    ordering = "BEFORE"
+    side = "BOTH"
+
+[modproperties.${mod_id)}]
+    catalogueImageIcon = "${mod_id}.png"
+    configuredBackground = "minecraft:textures/block/obsidian.png"

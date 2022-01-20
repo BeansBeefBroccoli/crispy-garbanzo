@@ -44,7 +44,7 @@ public class CrispyGarbanzo
 
     private void enqueueIMC(final InterModEnqueueEvent event)
     {
-        InterModComms.sendTo("examplemod", "helloworld", () -> { LOGGER.info("Hello world from the MDK"); return "Hello world";});
+        InterModComms.sendTo("crispygarbanzo", "helloworld", () -> { LOGGER.info("Hello world from the MDK"); return "Hello world";});
     }
 
     private void processIMC(final InterModProcessEvent event)

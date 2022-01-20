@@ -1,7 +1,7 @@
 buildscript {
     repositories {
         maven {
-            name = "ForgeGradle Maven"
+            name = "Forge Maven"
             url = "https://maven.minecraftforge.net"
             }
         mavenCentral()
@@ -23,16 +23,13 @@ java.toolchain.languageVersion = JavaLanguageVersion.of(8)
 
 println("Java: " + System.getProperty("java.version") + " JVM: " + System.getProperty("java.vm.version") + "(" + System.getProperty("java.vendor") + ") Arch: " + System.getProperty("os.arch"))
 minecraft {
-    mappings channel: "${mappings_channel}", version: "${mappings_version}"
+    mappings channel: "${mappings_channel}", version: "${minecraft_version}"
 
     runs {
         client {
             workingDirectory project.file("run")
-
             property "forge.logging.markers", "REGISTRIES"
-
             property "forge.logging.console.level", "debug"
-
             mods {
                 "${mod_id}" {
                     source sourceSets.main
@@ -42,11 +39,8 @@ minecraft {
 
         server {
             workingDirectory project.file("run")
-
             property "forge.logging.markers", "REGISTRIES"
-
             property "forge.logging.console.level", "debug"
-
             mods {
                 "${mod_id}" {
                     source sourceSets.main
@@ -56,13 +50,9 @@ minecraft {
 
         data {
             workingDirectory project.file("run")
-
             property "forge.logging.markers", "REGISTRIES"
-
             property "forge.logging.console.level", "debug"
-
             args "--mod", mod_id, "--all", "--output", file("src/generated/resources/"), "--existing", file("src/main/resources/")
-
             mods {
                 "${mod_id}" {
                     source sourceSets.main
@@ -78,7 +68,7 @@ sourceSets.main.resources {
 
 repositories {
     maven {
-        url =    "https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/"
+        url = "https://dl.cloudsmith.io/public/geckolib3/geckolib/maven"
     }
 /*
     maven {
@@ -86,25 +76,33 @@ repositories {
     }
 */
     maven {
-        url = "https://www.cursemaven.com"
+        name = "Curse Maven"
+        url = "https://cursemaven.com"
+//      url = "https://www.cursemaven.com"
     }
     maven {
-        url = "https://dvs1.progwml6.com/files/maven/"
+        name = "progwml6 Maven"
+        url = "https://dvs1.progwml6.com/files/maven"
     }
     maven {
+        name = "TehNut Maven"
         url = "https://maven.tehnut.info"
     }
     maven {
+        name = "Jitpack"
         url = "https://jitpack.io"
         }
     maven {
-        url = "https://maven.tterrag.com/"
+        name = "tterrag Maven"
+        url = "https://maven.tterrag.com"
     }
     maven {
+        name = "BlameJared Maven"
         url = "https://maven.blamejared.com"
     }
     maven {
-        url = "https://modmaven.dev/"
+        name = "Modmaven"
+        url = "https://modmaven.dev"
         content {
             includeGroup "blusunrize.immersiveengineering"
 //          includeGroup "malte0811"

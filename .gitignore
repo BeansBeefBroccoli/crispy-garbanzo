@@ -8,7 +8,6 @@ logs
 run
 src/generated/resources/.cache
 
-
 # IDE
 
 .idea
@@ -19,7 +18,6 @@ src/generated/resources/.cache
 *.iws
 *.launch
 src/test
-
 
 # OS
 
