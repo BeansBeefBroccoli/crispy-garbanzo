@@ -1,4 +1,4 @@
-<h1> <img src="https://user-images.githubusercontent.com/69123018/171284529-be0711db-6d9d-4e79-994c-93d207de0e1e.png" alt="Crispy Garbanzo"> </h1> <style> h1{text-align: center;} </style>
+# ![Crispy Garbanzo](https://user-images.githubusercontent.com/69123018/171284529-be0711db-6d9d-4e79-994c-93d207de0e1e.png)
 
 Fun Fact: The name "Crispy Garbanzo" actually came from GitHub, while making this repository.
 
